@@ -1,7 +1,6 @@
-require "garage/jwt/version"
+require "garage"
 
-module Garage
-  module Jwt
-    # Your code goes here...
-  end
-end
+require "garage/jwt/version"
+require "garage/jwt/algorithm"
+require "garage/jwt/config"
+require "garage/jwt/error"
