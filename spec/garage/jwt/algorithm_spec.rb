@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Garage::Jwt::Algorithm do
   where(:algorithm, :needs_common_key, :needs_public_key, :needs_private_key) do
