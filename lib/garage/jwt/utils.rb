@@ -7,7 +7,7 @@ module Garage
             sub: resource_owner_id,
             aud: application_id,
             exp: expired_at.to_i,
-            scope: scope.join(" ")
+            scope: (scope.is_a?(Array) ? scope.join(" ") : scope)
           }
           JWT.encode(payload, private_key, algorithm.type)
         end
