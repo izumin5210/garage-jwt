@@ -11,6 +11,9 @@ require "active_job/railtie"
 require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
+require "the_garage"
+require "garage/meta"
+require "garage/docs"
 require "garage/jwt"
 
 module Dummy
