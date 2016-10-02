@@ -1,5 +1,7 @@
 # Garage::Jwt
 [![Build Status](https://travis-ci.org/izumin5210/garage-jwt.svg?branch=master)](https://travis-ci.org/izumin5210/garage-jwt)
+[![Test Coverage](https://codeclimate.com/github/izumin5210/garage-jwt/badges/coverage.svg)](https://codeclimate.com/github/izumin5210/garage-jwt/coverage)
+[![Code Climate](https://codeclimate.com/github/izumin5210/garage-jwt/badges/gpa.svg)](https://codeclimate.com/github/izumin5210/garage-jwt)
 
 Garage extension to use JWT as authentication strategy.
 
