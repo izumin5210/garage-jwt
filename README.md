@@ -60,15 +60,18 @@ The following cryptographic signing algorithms are available:
 
 
 ### Generate token
+You can encode token with the following method:
 
 ```ruby
-Garage::Jwt::Utils.encode(
-  resource_owner_id: user.di,
+Garage::Jwt.encode_token(
+  resource_owner_id: user.id,
   application_id: 128,
   scope: "read write",
   expired_at: Time.zone.now + 15.minutes
 )
 ```
+
+Or if you use `Garage::ControllerHelper`, you can use `encode_token` method.
 
 
 ## Development
