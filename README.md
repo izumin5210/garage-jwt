@@ -1,8 +1,8 @@
 # Garage::Jwt
+[![Build Status](https://travis-ci.org/izumin5210/garage-jwt.svg?branch=master)](https://travis-ci.org/izumin5210/garage-jwt)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/garage/jwt`. To experiment with that code, run `bin/console` for an interactive prompt.
+Garage extension to use JWT as authentication strategy.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -22,7 +22,49 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+In `config/initializer/garage.rb`:
+
+```ruby
+Garage.configuration.strategy = Garage::Strategy::Jwt
+
+Garage::Jwt.configure do |c|
+  c.algorithm = Garage::Jwt::Algorithm.hs256
+  c.common_key = "secret key"
+
+  # c.private_key = OpenSSL::PKey::RSA.generate 2048
+  # c.public_key = c.private_key.public_key
+end
+```
+
+The following cryptographic signing algorithms are available:
+
+- NONE
+  - `Garage::Jwt::Algorithm.none`
+- HMAC
+  - `Garage::Jwt::Algorithm.hs256` - HMAC using SHA-256 hash algorithm
+  - `Garage::Jwt::Algorithm.hs384` - HMAC using SHA-384 hash algorithm
+  - `Garage::Jwt::Algorithm.hs512` - HMAC using SHA-512 hash algorithm
+- RSA
+  - `Garage::Jwt::Algorithm.rs256` - RSA using SHA-256 hash algorithm
+  - `Garage::Jwt::Algorithm.rs384` - RSA using SHA-384 hash algorithm
+  - `Garage::Jwt::Algorithm.rs512` - RSA using SHA-512 hash algorithm
+- ECDSA
+  - `Garage::Jwt::Algorithm.rs256` - ECDSA using SHA-256 hash algorithm
+  - `Garage::Jwt::Algorithm.rs384` - ECDSA using SHA-384 hash algorithm
+  - `Garage::Jwt::Algorithm.rs512` - ECDSA using SHA-512 hash algorithm
+
+
+### Generate token
+
+```ruby
+Garage::Jwt::Utils.encode(
+  resource_owner_id: user.di,
+  application_id: 128,
+  scope: "read write",
+  expired_at: Time.zone.now + 15.minutes
+)
+```
+
 
 ## Development
 
@@ -32,7 +74,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/garage-jwt. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/izumin5210/garage-jwt. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
