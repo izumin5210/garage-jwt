@@ -17,7 +17,7 @@ module AuthenticatedContext
     let(:algorithm) { Garage::Jwt::Algorithm.hs256 }
 
     let(:access_token) do
-      Garage::Jwt::Utils.encode(
+      Garage::Jwt.encode_token(
         resource_owner_id: resource_owner_id,
         application_id: application_id,
         expired_at: expired_at,

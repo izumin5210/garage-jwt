@@ -10,7 +10,7 @@ describe Garage::Jwt::Utils do
   let(:scope) { %w(read) }
   let(:expired_at) { now + 15.minutes }
   let(:token) do
-    Garage::Jwt::Utils.encode(
+    Garage::Jwt.encode_token(
       resource_owner_id: user_id,
       application_id: application_id,
       scope: scope,
@@ -19,7 +19,7 @@ describe Garage::Jwt::Utils do
   end
 
   shared_examples_for 'a valid decoder' do
-    subject { Garage::Jwt::Utils.decode(token, "bearer") }
+    subject { Garage::Jwt.decode_token(token, "bearer") }
 
     context 'with valid token' do
       its([:resource_owner_id]) { is_expected.to eq user_id }
