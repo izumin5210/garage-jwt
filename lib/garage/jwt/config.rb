@@ -17,22 +17,31 @@ module Garage
           block.call(@config)
         end
 
-        def valid?
-          @config.algorithm.present? &&
-            @config.algorithm.is_a?(Garage::Jwt::Algorithm) &&
-            (
-              (!@config.algorithm.need_common_key? || @config.common_key.present?) &&
-              (!@config.algorithm.need_public_key? || @config.public_key.present?) &&
-              (!@config.algorithm.need_private_key? || @config.private_key.present?)
-            )
+        def build
+          validate!
+          @config
         end
 
-        def build
-          if valid?
-            @config
-          else
-            fail Garage::Jwt::InitializeError
+        private
+
+        def validate!
+          unless valid_algorithm?
+            fail Garage::Jwt::InitializeError.new("Invalid algorithm")
           end
+          unless valid_keys?
+            fail Garage::Jwt::InitializeError.new("Invalid keys")
+          end
+        end
+
+        def valid_algorithm?
+          @config.algorithm.present? &&
+            @config.algorithm.is_a?(Garage::Jwt::Algorithm)
+        end
+
+        def valid_keys?
+          (!@config.algorithm.need_common_key? || @config.common_key.present?) &&
+            (!@config.algorithm.need_public_key? || @config.public_key.present?) &&
+            (!@config.algorithm.need_private_key? || @config.private_key.present?)
         end
       end
     end
