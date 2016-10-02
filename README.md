@@ -6,7 +6,7 @@
 [![Gem Version](https://badge.fury.io/rb/garage-jwt.svg)](https://badge.fury.io/rb/garage-jwt)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://izumin.mit-license.org/2016)
 
-Garage extension to use JWT as authentication strategy.
+[Garage](https://github.com/cookpad/garage) extension to use JWT as authentication strategy.
 
 
 ## Installation
