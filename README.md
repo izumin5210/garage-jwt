@@ -2,6 +2,9 @@
 [![Build Status](https://travis-ci.org/izumin5210/garage-jwt.svg?branch=master)](https://travis-ci.org/izumin5210/garage-jwt)
 [![Test Coverage](https://codeclimate.com/github/izumin5210/garage-jwt/badges/coverage.svg)](https://codeclimate.com/github/izumin5210/garage-jwt/coverage)
 [![Code Climate](https://codeclimate.com/github/izumin5210/garage-jwt/badges/gpa.svg)](https://codeclimate.com/github/izumin5210/garage-jwt)
+[![Dependency Status](https://gemnasium.com/badges/github.com/izumin5210/garage-jwt.svg)](https://gemnasium.com/github.com/izumin5210/garage-jwt)
+[![Gem Version](https://badge.fury.io/rb/garage-jwt.svg)](https://badge.fury.io/rb/garage-jwt)
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://izumin.mit-license.org/2016)
 
 Garage extension to use JWT as authentication strategy.
 
